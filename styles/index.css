@@ -1,0 +1,12 @@
+.cover {
+  background: #66CCFF;
+  display: grid;
+  width: 100vw;
+  grid-template-columns: 1fr 6fr 1fr;
+}
+
+.cover>img {
+  grid-column: 2;
+  width: 100%;
+  height: 400px;
+}
