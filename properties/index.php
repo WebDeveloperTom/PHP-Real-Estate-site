@@ -1,17 +1,29 @@
 <?php include '../components/header.php'; ?>
-    <p>this is the properties page</p>
-    <?php
-    include '../includes/config.php';
-    // echo "This is the property page";
-    if (isset($_GET['id'])) {
-      $id = $_GET['id'];
-      $sql = "SELECT * FROM houses WHERE house_id = '$id'";
+<?php include '../includes/config.php';
+    if (true) {
+      $sql = "SELECT * FROM houses";
       $result = mysqli_query($conn, $sql);
       while($row = mysqli_fetch_assoc($result)){
-        echo $row['address_1'].", ";
-        echo $row['address_2'];
-        echo "<br><p>".$row['description']."</p>";
-        echo "<img src='".$row["image_link"]."' alt=''>";
+        echo "
+        <div class='house-item'>
+          <div class='image-container'>
+            <a href='#'>
+              <img src='$row[image_link]' alt=''>
+            </a>
+          </div>
+          <div class='house-detail'>
+            <a href='#'>
+              <p class='address'> $row[address_1], $row[address_2] </p>
+              <p class='price'></p>
+              <div class=''>
+                <span class='bed'></span>
+                <span class='bath'></span>
+                <span class='car'></span>
+              </div>
+            </a>
+          </div>
+        </div>
+        ";
         }
 
 
