@@ -12,7 +12,7 @@
             </a>
           </div>
           <div class='house-detail'>
-            <a href='#'>
+            <a href='./listing.php?id=$row[house_id]'>
               <p class='address'> $row[address_1], $row[address_2] </p>
               <p class='price'></p>
               <div class=''>
