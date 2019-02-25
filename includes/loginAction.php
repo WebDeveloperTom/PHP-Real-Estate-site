@@ -1,4 +1,5 @@
 <?php
+session_start();
 $username = $pwd = $result = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include_once 'config.php';
@@ -15,13 +16,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $resultCheck = mysqli_num_rows($result);
     if ($resultCheck > 0) {
       //user exists, check password.
-      $sql = "SELECT password, first_name FROM users WHERE username = '$username'";
+      $sql = "SELECT password, first_name, is_admin, id FROM users WHERE username = '$username'";
       $result = mysqli_query($conn, $sql);
       $row = mysqli_fetch_assoc($result);
       $dbpassword = $row['password'];
       $fName = $row['first_name'];
       if (password_verify($pwd, $dbpassword)) {
-        header("Location: ../welcome.php?fName=$fName");
+        $_SESSION["loggedIn"] = true;
+        $_SESSION["user_id"] = $row['id'];
+        if($row['is_admin']){
+          $_SESSION["admin"] = $row['is_admin'];
+          header("Location: ../admin");
+          exit();
+        }
+        //if admin = true -> session[admin] = true
+
+        header("Location: ../profile.php?fName=$fName");
       } else {
         //password doesnt match, throw error.
         header("Location: ../login.php?query=mismatch");
