@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="styles\nav.css">
-  </head>
-  <body>
-    <?php include 'components/Nav.php'; ?>
+<?php include 'components/header.php'; ?>
     <main>
       <h2>Sign up form</h2>
        <?php
@@ -61,5 +53,4 @@
         <input type="submit" name="" value="Submit">
       </form>
     </main>
-  </body>
-</html>
+<?php include 'components/footer.php'; ?>
