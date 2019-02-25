@@ -9,26 +9,26 @@
       while($row = mysqli_fetch_assoc($result)){
         echo "
           <form action='";
-        echo htmlspecialchars('includes\editAction.php');
+        echo htmlspecialchars('../includes\editAction.php');
         echo "' method='POST'>
-            <input type='text' readonly value='$row[house_id]' />
-            <input type='text' value='$row[address_1]' />
-            <input type='text' value='$row[address_2]' />
-            <input type='text' value='$row[bed]' />
-            <input type='text' value='$row[bathroom]' />
-            <input type='text' value='$row[car]' />
+            <input type='text' name='house_id' readonly value='$row[house_id]' />
+            <input type='text' name='address_1' value='$row[address_1]' />
+            <input type='text' name='address_2' value='$row[address_2]' />
+            <input type='text' name='bed' value='$row[bed]' />
+            <input type='text' name='bathroom' value='$row[bathroom]' />
+            <input type='text' name='car' value='$row[car]' />
             <textarea name='description' id='' cols='30' rows='30'>$row[description]</textarea>
-            <input type='text' value='$row[price]' />";
+            <input type='text' name='price' value='$row[price]' />";
         if ($row['auction']) {
           echo "
-            <input type='checkbox' checked value='1' />";
+            <input type='checkbox' name='auction' checked value='1' />";
         } else {
           echo "
-            <input type='checkbox' />";
+            <input type='checkbox' name='auction' />";
         }
         echo "
-            <input type='text' value='$row[image_link]' />
-            <input type='text' value='$row[agent_id]' />
+            <input type='text' name='image_link' value='$row[image_link]' />
+            <input type='text' name='agent_id' value='$row[agent_id]' />
             <button type='submit'>Update</button>
           </form>
         ";
