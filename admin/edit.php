@@ -9,7 +9,7 @@
       while($row = mysqli_fetch_assoc($result)){
         echo "
           <form action='";
-        echo htmlspecialchars('../includes\editAction.php');
+        echo htmlspecialchars('../includes/editAction.php');
         echo "' method='POST'>
             <input type='text' name='house_id' readonly value='$row[house_id]' />
             <input type='text' name='address_1' value='$row[address_1]' />
@@ -34,18 +34,18 @@
         ";
         echo "
           <form action='";
-        echo htmlspecialchars('includes\deleteAction.php');
+        echo htmlspecialchars('../includes/deleteAction.php');
         echo "' method='POST'>
+            <input type='hidden' name='delete_id' value='$row[house_id]' />
             <button type='submit'>DELETE</button>
           </form>";
+          echo "<button>View Listing</button>";
         }
 
 
     } else {
       echo "WHoops, something went wrong";
     }
-//$sql = "DELETE FROM houses WHERE house_id=$row[house_id]";
-// $sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
 
 // Checkboxes can also have value on, when they are checked.
 // Therefore for compatibility it's easier just to use isset($_POST['checkboxName'])
