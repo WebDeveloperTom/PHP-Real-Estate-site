@@ -2,6 +2,7 @@
 $house_id = $address_1 = $address_2 = $bed = $bathroom = $car = $description = $price = $auction = $image_link = $agent_id = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include_once 'config.php';
+    // grab ALL data from form fields
     $house_id = mysqli_real_escape_string($conn, $_POST['house_id']);
     $address_1 = mysqli_real_escape_string($conn, $_POST['address_1']);
     $address_2 = mysqli_real_escape_string($conn, $_POST['address_2']);
@@ -17,17 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $image_link = mysqli_real_escape_string($conn, $_POST['image_link']);
     $agent_id = mysqli_real_escape_string($conn, $_POST['agent_id']);
-    echo $house_id;
-    echo $address_1;
-    echo $bed;
-    echo $bathroom;
-    echo $car;
-    echo $description;
-    echo $price;
-    echo $auction;
-    echo $image_link;
-    echo $agent_id;
-
+    //ensure sure all fields are filled
+    if (empty($house_id) || empty($address_1) || empty($address_2) || empty($bed) ||
+        empty($bathroom) || empty($car) || empty($description) || empty($price) ||
+        empty($image_link) || empty($agent_id)) {
+      header("Location: /assignment7/admin/edit.php?id=$house_id&error=empty");
+      exit();
+    }
+    // fields need to be validated
 
 }
 // $row[house_id]
