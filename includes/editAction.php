@@ -26,6 +26,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       exit();
     }
     // fields need to be validated
+    // after validation, SQL statement
+    $sql = "UPDATE houses
+            SET address_1='$address_1', address_2='$address_2',
+                bed='$bed', bathroom='$bathroom', car='$car',
+                description='$description', price='$price',
+                auction='$auction', image_link='$image_link',
+                agent_id='$agent_id'
+            WHERE house_id='$house_id';";
+    mysqli_query($conn, $sql);
+    header("Location: /assignment7/admin/edit.php?id=$house_id&success=true");
 
 }
 // $row[house_id]
