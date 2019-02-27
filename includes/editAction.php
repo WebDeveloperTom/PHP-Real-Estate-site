@@ -38,16 +38,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: /assignment7/admin/edit.php?id=$house_id&success=true");
 
 }
-// $row[house_id]
-// $row[address_1]
-// $row[address_2]
-// $row[bed]
-// $row[bathroom]
-// $row[car]
-// $row[description]
-// $row[price]
-// $row[auction]
-// $row[image_link]
-// $row[agent_id]
-
  ?>

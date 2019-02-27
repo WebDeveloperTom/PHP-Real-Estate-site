@@ -1,5 +1,5 @@
-<?php include '../components/header.php'; ?>
-    <?php
+<?php
+    include '../components/header.php';
     include '../includes/config.php';
     // echo "This is the property page";
     if (isset($_GET['id'])) {
@@ -46,10 +46,5 @@
     } else {
       echo "WHoops, something went wrong";
     }
-
-// Checkboxes can also have value on, when they are checked.
-// Therefore for compatibility it's easier just to use isset($_POST['checkboxName'])
-     ?>
-
-
-<?php include '../components/footer.php'; ?>
+     include '../components/footer.php';
+?>
