@@ -10,7 +10,7 @@
         echo "
           <form action='";
         echo htmlspecialchars('../includes/editAction.php');
-        echo "' method='POST'>
+        echo "' method='POST' enctype='multipart/form-data'>
             <input type='text' name='house_id' readonly value='$row[house_id]' />
             <input type='text' name='address_1' value='$row[address_1]' />
             <input type='text' name='address_2' value='$row[address_2]' />
@@ -27,7 +27,9 @@
             <input type='checkbox' name='auction' />";
         }
         echo "
-            <input type='text' name='image_link' value='$row[image_link]' />
+            <input type='file' name='file' />
+            <img src='../house_assests/$row[image_link]' alt='' />
+            <input type='hidden' name='image_link' value='$row[image_link]' />
             <input type='text' name='agent_id' value='$row[agent_id]' />
             <button type='submit'>Update</button>
           </form>
