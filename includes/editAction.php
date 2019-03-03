@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $allowed_ext = array('jpg', 'jpeg', 'png');
       if($file_error === 0){
         if (in_array($file_actual_ext, $allowed_ext)) {
-          if ($file_size < 1000000){
+          if ($file_size < 10000){
             $file_new_name = str_replace(' ', '', $address_1).".".$file_actual_ext;
             $file_destination = "C:/xampp/htdocs/assignment7/house_assests/$file_new_name";
             move_uploaded_file($file_tmp_name, $file_destination);
