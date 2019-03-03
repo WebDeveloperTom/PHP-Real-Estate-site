@@ -31,13 +31,21 @@
                 <span class='car'>Car: $row[car]</span>
               </div>
             </a>
+          </div>";
+          if (isset($_SESSION["admin"])) {
+            echo "
+            <div>
+              <button onclick=location.href='../admin/edit.php?id=$row[house_id]'>Edit Listing</button>
+            </div>
           </div>
+          ";
+        } else {
+          echo "
         </div>
         ";
         }
-
-
-    } else {
+    }
+  } else {
       echo "WHoops, something went wrong";
     }
      ?>
