@@ -1,8 +1,17 @@
 <?php include 'components/header.php'; ?>
-    <main>
+
+<main class="container">
+
+  <div class="header">
+    <h1>Online realestate</h1>
+    <p class="lead">It's free realestate.</p>
+  </div>
+
+</main>
+
+    <!-- <main>
       <div class="cover">
         <img  src="assests\main-cover-photo.jpeg" alt="">
       </div>
-
-    </main>
+    </main> -->
 <?php include 'components/footer.php'; ?>
