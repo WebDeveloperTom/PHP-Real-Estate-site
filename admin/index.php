@@ -24,7 +24,7 @@
       <div class='admin-list-item'>
         <div class='image-container'>
           <a href='#'>
-            <img src='$row[image_link]' alt=''>
+            <img src='../house_assests/$row[image_link]' alt=''>
           </a>
         </div>
         <div class='house-detail'>
