@@ -8,6 +8,7 @@ echo "
     <title></title>
     <link rel='stylesheet' href='/assignment7/styles/index.css'>
     <link rel='stylesheet' href='/assignment7/styles/nav.css'>
+    <link rel='stylesheet' href='/assignment7/styles/edit.css'>
     <link rel='stylesheet' href='/assignment7/styles/properties.css'>
   </head>
   <body>
