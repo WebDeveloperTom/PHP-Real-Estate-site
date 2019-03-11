@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       header("Location: /assignment7/admin/edit.php?id=$house_id&error=empty");
       exit();
     }
-    //should check to see if the address is already in the system.
+
     //picture isn't always updated. Check to see if a new file was uploaded.
     if (isset($_FILES['file'])) {
       $file = $_FILES['file'];
@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $file_type = $file['type'];
       $file_ext = explode('.', $file_name);
       $file_actual_ext = strtolower(end($file_ext));
+      //allowed file extension
       $allowed_ext = array('jpg', 'jpeg', 'png');
       if($file_error === 0){
         if (in_array($file_actual_ext, $allowed_ext)) {
