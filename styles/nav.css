@@ -1,0 +1,36 @@
+header {
+  display: flex;
+  height: 75px;
+  background: #0099CC;
+}
+
+.logo>img {
+  max-height: 75px;
+  padding: 10px;
+}
+
+.menus {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.menus>nav>ul {
+  list-style: none;
+}
+
+.main-menu>ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav>ul>li {
+  width: 100px;
+}
+
+.login>ul {
+  display: flex;
+  justify-content: space-around;
+}

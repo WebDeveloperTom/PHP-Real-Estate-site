@@ -1,0 +1,9 @@
+.houses-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.house-item {
+  border: solid black 2px;
+  margin: 5px;
+}
