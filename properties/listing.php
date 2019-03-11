@@ -10,7 +10,7 @@
         echo $row['address_1'].", ";
         echo $row['address_2'];
         echo "<br><p>".$row['description']."</p>";
-        echo "<img src='".$row["image_link"]."' alt=''>";
+        echo "<img src='../house_assests/$row[image_link]' alt=''>";
         }
 
 

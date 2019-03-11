@@ -13,7 +13,7 @@
         <div class='house-item'>
           <div class='image-container'>
             <a href='#'>
-              <img src='$row[image_link]' alt=''>
+              <img src='../house_assests/$row[image_link]' alt=''>
             </a>
           </div>
           <div class='house-detail'>
@@ -46,7 +46,7 @@
         }
     }
   } else {
-      echo "WHoops, something went wrong";
+      echo "Whoops, something went wrong";
     }
      ?>
 </div>
