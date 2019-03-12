@@ -7,6 +7,6 @@
           include 'components\loginForm.php';
 
       }
-?>
+      ?>
     </main>
 <?php include 'components/footer.php'; ?>

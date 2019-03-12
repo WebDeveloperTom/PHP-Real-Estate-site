@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (password_verify($pwd, $dbpassword)) {
         $_SESSION["loggedIn"] = true;
         $_SESSION["user_id"] = $row['id'];
+        $_SESSION["first_name"] = $row['first_name'];
         if($row['is_admin']){
           $_SESSION["admin"] = $row['is_admin'];
           header("Location: ../admin");
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         //if admin = true -> session[admin] = true
 
-        header("Location: ../profile.php?fName=$fName");
+        header("Location: ../index.php?loggedIn");
       } else {
         //password doesnt match, throw error.
         header("Location: ../login.php?query=mismatch");

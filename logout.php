@@ -7,5 +7,5 @@ session_unset();
 
 // destroy the session
 session_destroy();
-header("Location: /assignment7?signedOut");
+header("Location: /assignment7?signedOut=true");
 ?>

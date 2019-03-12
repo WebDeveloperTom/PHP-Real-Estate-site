@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $cPwd = mysqli_real_escape_string($conn ,$_POST['cPwd']);
 // error handlers
 // check for empty fields
+
   if(empty($fName) || empty($email) || empty($username) || empty($pwd) || empty($cPwd)){
     header("Location: ../signup.php?query=empty");
     exit();
