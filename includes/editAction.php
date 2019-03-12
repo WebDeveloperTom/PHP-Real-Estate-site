@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     //picture isn't always updated. Check to see if a new file was uploaded.
-    if (isset($_FILES['file'])) {
+    //if file error == 4, that means no file was uploaded.
+    if (!$_FILES['file']['error'] == 4) {
       $file = $_FILES['file'];
       $file_name = $file['name'];
       $file_size = $file['size'];
@@ -41,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $allowed_ext = array('jpg', 'jpeg', 'png');
       if($file_error === 0){
         if (in_array($file_actual_ext, $allowed_ext)) {
-          if ($file_size < 10000){
+          if ($file_size < 1000000){
             $file_new_name = str_replace(' ', '', $address_1).".".$file_actual_ext;
             $file_destination = "C:/xampp/htdocs/assignment7/house_assests/$file_new_name";
             move_uploaded_file($file_tmp_name, $file_destination);
