@@ -1,5 +1,13 @@
 <?php include '../components/header.php'; ?>
 <?php include '../includes/config.php'; ?>
+<!-- admin navigation -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb breadcrumb-dot justify-content-center">
+    <li class="breadcrumb-item"><a href="../admin">Admin panel</a></li>
+    <li class="breadcrumb-item"><a href="./add.php">Add Listing</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Property Listings</li>
+  </ol>
+</nav>
 <main class="container">
   <?php
   // admin checks
@@ -12,24 +20,21 @@
     </div>";
     exit();
   } ?>
-  <div class="row justify-content-center mt-2">
-    <h2>Admin Panel</h2>
-  </div>
+
   <div class="row justify-content-center mt-3">
-    <button class='btn btn-info' onclick=location.href='./add.php' type='button'>Add new listing</button>
-    <button class='btn btn-warning' onclick=location.href='./editList.php' type='button'>Edit Properties</button>
+    <h2 class="">Edit Listings</h2>
   </div>
-  <div class="row justify-content-center mt-2">
-    <h3>3 recently added properties</h3>
-  </div>
-  <div class="row">
-    <?php
-    //fetch and display the 3 most recent houses added to the houses table.
-    $latestHousesSQL = "SELECT * FROM houses ORDER BY house_id DESC LIMIT 3";
-    $result = mysqli_query($conn, $latestHousesSQL);
+  <div class="row align-items-start">
+
+  <?php
+  if ($conn){
+    //fetch all data from houses table.
+    $sql = "SELECT * FROM houses";
+    $result = mysqli_query($conn, $sql);
+    //display each house as a grid column with data pulled from table
     while($row = mysqli_fetch_assoc($result)){
       echo "
-      <div class='col-lg-4 col-md-4 col-sm-6 col-xs-12 div-cell'>
+      <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 div-cell'>
         <div class='card shadow-sm'>
           <img class='card-img-top' src='../house_assests/$row[image_link]' width='100%' height='225' alt=''>
           <div class='card-body'>
@@ -60,8 +65,9 @@
           </div>
         </div>
       </div>";
-}
-    ?>
-  </div>
+    }
+  }
+   ?>
+ </div>
 </main>
 <?php include '../components/footer.php'; ?>

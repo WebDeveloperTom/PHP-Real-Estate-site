@@ -1,12 +1,12 @@
 <?php
-//new add form
-
+//define and set to null varibles.
 $address_1 = $address_2 = $bed = $bathroom = $car =
 $description = $price = $auction = $image_link = $file = $agent_id = "";
 $file_new_name = NULL;
+//check for POST method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include_once 'config.php';
-    // grab ALL data from form fields
+    // grab ALL data from form fields and escape any bad characters
     $address_1 = mysqli_real_escape_string($conn, $_POST['address_1']);
     $address_2 = mysqli_real_escape_string($conn, $_POST['address_2']);
     $bed = mysqli_real_escape_string($conn, $_POST['bed']);
@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $car = mysqli_real_escape_string($conn, $_POST['car']);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
     $price = mysqli_real_escape_string($conn, $_POST['price']);
+    //check to see if the auction check box was ticked or not.
     if(!isset($_POST['auction'])){
       $auction = 0;
     } else {
@@ -24,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //ensure sure all fields are filled
     if (empty($address_1) || empty($address_2) || empty($bed) ||
         empty($bathroom) || empty($car) || empty($description) || empty($price) || empty($agent_id)) {
-      header("Location: /assignment7/admin/add.php?error=empty");
+      header("Location: /assignment7/admin/add.php?query=empty");
       exit();
     }
 
@@ -52,10 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         }
       } else {
-        header("Location: /assignment7/admin/add.php?upload=failed");
+        header("Location: /assignment7/admin/add.php?query=uploadFailed");
         exit();
       }
     }
+    //everything looks good, add to DB
       $sql = "INSERT INTO houses (address_1, address_2, bed, bathroom, car, description, price, auction, image_link, agent_id)
               VALUES('$address_1', '$address_2', '$bed', '$bathroom', '$car', '$description', '$price', '$auction', '$file_new_name', '$agent_id')";
 

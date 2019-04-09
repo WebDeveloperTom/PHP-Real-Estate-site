@@ -4,6 +4,7 @@
       if (isset($_SESSION['loggedIn'])) {
         echo "You are already logged in";
       } else {
+        //load the login form component
           include 'components\loginForm.php';
 
       }

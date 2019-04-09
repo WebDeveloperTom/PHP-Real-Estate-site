@@ -1,6 +1,5 @@
 <?php include 'components/header.php'; ?>
     <main>
-      <h2>Sign up form</h2>
        <?php
        //error messages.
        if (isset($_GET['query'])) {
@@ -25,32 +24,51 @@
          }
        }
         ?>
-
-      <form action=" <?php echo htmlspecialchars('includes\signupAction.php')?>" method="POST">
-        <?php
-          if (isset($_GET['fName'])) {
-            $fName = $_GET['fName'];
-            echo '<input type="text" name="fName" placeholder="Name" value="'.$fName.'" />';
-          } else {
-            echo '<input type="text" name="fName" placeholder="Name" />';
-          }
-          if (isset($_GET['email'])) {
-            $email = $_GET['email'];
-            echo '<input type="text" name="email" placeholder="Email" value="'.$email.'" />';
-          } else {
-            echo ' <input type="email" name="email" placeholder="Email" />';
-          }
-          if(isset($_GET['username'])){
-            $username = $_GET['username'];
-            echo '<input type="text" name="username" placeholder="Username" value="'.$username.'">';
-          } else {
-            echo '<input type="text" name="username" placeholder="Username">';
-          }
-
-         ?>
-        <input type="password" placeholder="Password" name="pwd">
-        <input type="password" placeholder="Confirm Password" name="cPwd">
-        <input type="submit" name="" value="Submit">
-      </form>
+        <div class="login-form">
+          <?php
+          echo "<form class='' action=";
+          echo htmlspecialchars('includes\signupAction.php');
+          echo " method='post'> "; ?>
+            <h2 class='text-center'>Sign Up</h2>
+            <div class='form-group'>
+              <?php
+              //check to see if there are any relivant $_GET and display the info accordingly
+              if (isset($_GET['fName'])) {
+                $fName = $_GET['fName'];
+                echo "<input type='text' name='fName' value='$fName' placeholder='Name' class='form-control'>";
+              } else {
+                echo "<input type='text' name='fName' value='' placeholder='Name' class='form-control'>";
+              } ?>
+            </div>
+            <div class='form-group'>
+              <?php
+              if (isset($_GET['email'])) {
+                $email = $_GET['email'];
+                echo "<input type='email' name='email' value='$email' placeholder='Email' class='form-control'>";
+              } else {
+                echo "<input type='email' name='email' value='' placeholder='Email' class='form-control'>";
+              } ?>
+            </div>
+            <div class='form-group'>
+              <?php
+              if (isset($_GET['username'])) {
+                $username = $_GET['username'];
+                echo "<input type='text' name='username' value='$username' placeholder='Username' class='form-control'>";
+              } else {
+                echo "<input type='text' name='username' value='' placeholder='Username' class='form-control'>";
+              } ?>
+            </div>
+            <div class='form-group'>
+              <input type='password' name='pwd' value='' placeholder='Password' class='form-control'>
+            </div>
+            <div class='form-group'>
+              <input type='password' name='cPwd' value='' placeholder='Confirm Password' class='form-control'>
+            </div>
+            <div class='form-group'>
+              <button type='submit' name='button' class='btn btn-primary btn-block'>Sign up!</button>
+            </div>
+          </form>
+            <p class='text-center'><a href='./login.php'>Already have an account? Log in</a></p>
+         </div>
     </main>
 <?php include 'components/footer.php'; ?>

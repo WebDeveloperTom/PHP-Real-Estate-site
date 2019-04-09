@@ -1,4 +1,5 @@
 <?php
+session_start();
 $fName = $username = $email = $pwd = $cPwd = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   include_once 'config.php';
@@ -67,7 +68,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $sql = "INSERT INTO users (first_name, username, email, password)
               VALUES ('$fName', '$username', '$email', '$hashedPwd'); ";
       mysqli_query($conn, $sql);
-      header("Location: ../signup.php?query=success");
+      //log the user in.
+      $_SESSION["loggedIn"] = true;
+      $_SESSION["first_name"] = $fName;
+      $IdSql = "SELECT id FROM users WHERE username = '$username'";
+      $IdResult = mysqli_query($conn, $IdSql);
+      $IdRow = mysqli_fetch_assoc($IdResult);
+      $test = $IdRow['id'];
+      $_SESSION["user_id"] = $IdRow['id'];
+
+      header("Location: ../index.php?loggedIn&id=$test");
       exit();
 
     }

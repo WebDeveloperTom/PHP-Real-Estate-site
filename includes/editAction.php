@@ -1,4 +1,5 @@
 <?php
+// define and set varibles
 $house_id = $address_1 = $address_2 = $bed = $bathroom = $car =
 $description = $price = $auction = $image_link = $file = $agent_id = "";
 $file_new_name = NULL;
@@ -23,10 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //ensure sure all fields are filled
     if (empty($house_id) || empty($address_1) || empty($address_2) || empty($bed) ||
         empty($bathroom) || empty($car) || empty($description) || empty($price) || empty($agent_id)) {
-      header("Location: /assignment7/admin/edit.php?id=$house_id&error=empty");
+      header("Location: /assignment7/admin/edit.php?id=$house_id&query=empty");
       exit();
     }
-
     //picture isn't always updated. Check to see if a new file was uploaded.
     //if file error == 4, that means no file was uploaded.
     if (!$_FILES['file']['error'] == 4) {
@@ -49,11 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           }
         }
       } else {
-        header("Location: /assignment7/admin/edit.php?id=$house_id&upload=failed");
+        header("Location: /assignment7/admin/edit.php?id=$house_id&query=uploadFailed");
         exit();
       }
     }
     $sql = "";
+    //if there is a new file name, update the old one
     if (isset($file_new_name)) {
       $sql = "UPDATE houses
               SET address_1='$address_1', address_2='$address_2',
@@ -63,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   agent_id='$agent_id'
               WHERE house_id='$house_id';";
     } else {
+      //otherwise update everything else.
       $sql = "UPDATE houses
               SET address_1='$address_1', address_2='$address_2',
                   bed='$bed', bathroom='$bathroom', car='$car',
@@ -71,12 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   agent_id='$agent_id'
               WHERE house_id='$house_id';";
     }
-
-    // fields need to be validated
-    // after validation, SQL statement
-
     mysqli_query($conn, $sql);
     header("Location: /assignment7/admin/edit.php?id=$house_id&success=true");
-
 }
  ?>

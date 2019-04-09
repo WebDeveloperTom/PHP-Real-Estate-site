@@ -15,7 +15,7 @@
         <!-- house list start  -->
         <?php
             if ($conn) {
-              $sql = "SELECT * FROM houses";
+              $sql = "SELECT * FROM houses ORDER BY house_id DESC";
               $result = mysqli_query($conn, $sql);
               while($row = mysqli_fetch_assoc($result)){
                 echo "
@@ -30,7 +30,7 @@
                     </ul>
                     <ul class='list-group text-center'>";
                     if ($row['auction']) {
-                        echo "<li class='list-group-item'>House to be auctioned</li>";
+                        echo "<li class='list-group-item'>Sale by auction</li>";
                       } else {
                         echo "<li class='list-group-item'>$$row[price]</li>";
                       }

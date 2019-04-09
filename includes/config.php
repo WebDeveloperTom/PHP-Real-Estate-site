@@ -1,5 +1,4 @@
 <?php
-
 $host = 'localhost'; //location of clients DB
 $user ='root'; //default
 $dbPass ='';
@@ -8,6 +7,4 @@ $conn = new mysqli($host, $user, $dbPass, $db);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-// echo "Connected";
-
- ?>
+?>

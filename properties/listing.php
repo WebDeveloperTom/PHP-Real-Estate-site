@@ -1,13 +1,8 @@
 <?php include '../components/header.php'; ?>
     <?php
     include '../includes/config.php';
-    // echo "This is the property page";
-    // $row[house_id]
-    // $row[price]
-    // $row[auction]
-    // $row[agent_id]
-
     if (isset($_GET['id'])) {
+      // fetch the house info of the id that was submitted
       $id = $_GET['id'];
       $sql = "SELECT * FROM houses WHERE house_id = '$id'";
       $result = mysqli_query($conn, $sql);
@@ -20,7 +15,7 @@
           </div>
         ";
         echo "
-        <div class='container '>
+        <div class='container house-detail'>
           <div class='row'>
             <div class='col text-center'>
               <h3>$row[address_1], $row[address_2]</h3>
@@ -40,47 +35,41 @@
           </div>
           <div class='row'>
             <div class='col-md-6 text-center'>";
+            //if the house is being auctioned, display that
             if ($row['auction']) {
                 echo "<li class='list-group-item'>House to be auctioned</li>";
               } else {
+                //otherwise display the price.
                 echo "
-
                 <li class='list-group-item'>
                 <p>PRICE:</p>
                 <p>$$row[price]</p>
-                </li>
-                ";
+                </li>";
               }
             echo "
             </div>
             <div class='col-md-6 text-center'>
-            <div class='list-group-item'>
-              <p>For more info, call:</p>";
-              $agentSql = "SELECT * FROM agents WHERE agent_id = '$row[agent_id]'";
-              $agentResult = mysqli_query($conn, $agentSql);
-              while($Arow = mysqli_fetch_assoc($agentResult)){
-                echo "
-                <p>$Arow[agent_name]</p>
-                <p>$Arow[agent_mobile]</p>
-                <img height='100' src='../assests/$Arow[agent_profile]' alt='$Arow[agent_name]' />
-                ";
-              }
-
-
-            echo "
-            </div>
-
+              <div class='list-group-item'>
+                <p>For more info, call:</p>";
+                //fetch all the info of the agent attached to this property.
+                $agentSql = "SELECT * FROM agents WHERE agent_id = '$row[agent_id]'";
+                $agentResult = mysqli_query($conn, $agentSql);
+                while($Arow = mysqli_fetch_assoc($agentResult)){
+                  echo "
+                  <p>$Arow[agent_name]</p>
+                  <p>$Arow[agent_mobile]</p>
+                  <img height='100' src='../assests/$Arow[agent_profile]' alt='$Arow[agent_name]' />
+                  ";
+                }
+              echo "
+              </div>
             </div>
           </div>
         </div>
-
         ";
         }
-
-
     } else {
       echo "WHoops, something went wrong";
     }
      ?>
-
 <?php include '../components/footer.php'; ?>

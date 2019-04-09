@@ -1,3 +1,4 @@
+<!-- reusable login form -->
 <div class="login-form">
   <?php
   echo "<form class='' action=";
